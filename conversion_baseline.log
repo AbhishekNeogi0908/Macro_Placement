@@ -174,4 +174,8 @@ Total 542 macros are created in OpenDB
 Total 221142 nets are created in OpenDB
 
 Success! Baseline created at odbFiles/adaptec1_baseline.odb
+>>> Use exit() or Ctrl-D (i.e. EOF) to exit
+>>> Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'ezit' is not defined. Did you mean: 'exit'?
 >>> 

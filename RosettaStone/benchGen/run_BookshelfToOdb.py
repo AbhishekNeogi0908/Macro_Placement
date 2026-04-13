@@ -48,6 +48,11 @@ if not os.path.exists(output_dir):
     os.makedirs(output_dir)
 
 odb.write_db(db, os.path.join(output_dir, "adaptec1_baseline.odb"))
+
+# ADD THIS: Save the ASCII DEF file
+def_path = os.path.join(output_dir, "adaptec1_baseline.def")
+odb.write_def(db.getChip().getBlock(), def_path)
+
 print(f"\nSuccess! Baseline created at {output_dir}/adaptec1_baseline.odb")
 
 
