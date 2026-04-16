@@ -1,0 +1,25 @@
+# 1. Setup Paths (WSL mount format)
+set BASE_PATH "/mnt/c/Users/abhis/OneDrive/Desktop/Macro_Placement_WSL"
+set TECH_DIR  "$BASE_PATH/tech/nangate45"
+set ODB_DIR   "$BASE_PATH/adaptec1/odbFiles"
+
+# 2. Load Technology LEF
+read_lef "$TECH_DIR/lef/NangateOpenCellLibrary.tech.lef"
+
+# 3. Load Cell Macros and SRAMs
+read_lef "$TECH_DIR/lef/NangateOpenCellLibrary.macro.lef"
+# This glob command loads all the fakeram LEFs in one go
+foreach lef_file [glob "$TECH_DIR/lef/fakeram*.lef"] {
+    read_lef $lef_file
+}
+
+# 4. Load Liberty (Timing)
+read_liberty "$TECH_DIR/lib/NangateOpenCellLibrary_typical.lib"
+
+read_lef "$ODB_DIR/adaptec1_baseline.lef"
+
+# 5. Load your Design
+read_def "$ODB_DIR/adaptec1_baseline.def"
+
+# 6. Final Touch: Visual Center
+puts "Design 'adaptec1' loaded successfully."
