@@ -232,7 +232,7 @@ Comment out this above line of code and introduce a dummy ffArr list.
 
 Try to run again. There will be some progress.
 ```
- openroad -python /project/RosettaStone/benchGen/run_BookshelfToOdb.py 2>&1 | tee conversion_baseline.log
+ openroad -python RosettaStone/benchGen/run_BookshelfToOdb.py 2>&1 | tee conversion_baseline.log
 ```
 
 #### Error 6: 
