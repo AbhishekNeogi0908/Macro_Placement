@@ -4,9 +4,9 @@ import os
 # Path Configuration
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 BASE_DIR = os.path.abspath(os.path.join(SCRIPT_DIR, "..", "adaptec1"))
-RESULTS_DIR = os.path.join(BASE_DIR, "Results", "Phase1_Partitioning")
+RESULTS_DIR = os.path.join(BASE_DIR, "Results")
 
-JSON_OPTIMIZED = os.path.join(RESULTS_DIR, "optimized_macros_final.json")
+JSON_OPTIMIZED = os.path.join(RESULTS_DIR, "optimized_macros.json")
 ORIGINAL_PL = os.path.join(BASE_DIR, "adaptec1.pl")
 FINAL_PL = os.path.join(RESULTS_DIR, "Merged_optimized.pl")
 

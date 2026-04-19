@@ -14,7 +14,8 @@ DATA_DIR = os.path.abspath(os.path.join(SCRIPT_DIR, "..", "adaptec1"))
 RESULTS_DIR = os.path.join(DATA_DIR, "Results")
 
 # 2. Define the NEW specific subfolder for this approach
-PHASE1_DIR = os.path.join(RESULTS_DIR, "Phase1_Partitioning")
+#PHASE1_DIR = os.path.join(RESULTS_DIR, "Phase1_Partitioning")
+PHASE1_DIR = RESULTS_DIR
 
 # 3. Create the directories safely
 os.makedirs(PHASE1_DIR, exist_ok=True)

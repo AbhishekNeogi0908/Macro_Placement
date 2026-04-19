@@ -6,7 +6,7 @@ import numpy as np
 # Path Configuration
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 DATA_DIR = os.path.abspath(os.path.join(SCRIPT_DIR, "..", "adaptec1"))
-RESULTS_DIR = os.path.join(DATA_DIR, "Results", "Phase1_Partitioning")
+RESULTS_DIR = os.path.join(DATA_DIR, "Results")
 CLUSTERS_FILE = os.path.join(RESULTS_DIR, "clustered_macros.json")
 PL_FILE = os.path.join(DATA_DIR, "adaptec1.pl")
 ANCHORS_FILE = os.path.join(RESULTS_DIR, "cluster_anchors.json")
