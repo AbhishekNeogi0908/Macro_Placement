@@ -285,3 +285,53 @@ Try to run : ```openroad -python /project/RosettaStone/benchGen/run_BookshelfToO
 
 You will get the odb file inside ```Macro_Placement_WSL/adaptec1/odbFiles/adaptec1_baseline.odb```
 
+**
+## Openroad baseline section
+
+**
+
+Our Approach :
+
+### Phase 1 : Partitioning
+Is done by ```partition_macros.py``` script.
+From ```Macro_Placement_WSL``` navigate to ```Approach``` directory.
+
+```
+cd Approach
+python3 partition_macros.py
+```
+Expected output : ```clustered_macros.json``` should appear in ```adaptec1/Results/```
+
+### Phase 2: Global Anchor calculation 
+This uses the clustered results to calculate the center of gravity for each cluster.
+
+```
+python3 global_anchor.py --mode centroid
+```
+Expected Output: ```cluster_anchors.json``` should appear in ```adaptec1/Results/```
+
+### Phase 3: Macro Optimization (Gurobi)
+This is where the heavy mathematical optimization happens.
+
+```
+python3 optimize_macros.py
+```
+
+Expected Output: ```optimized_macros.json``` should appear in ```adaptec1/Results/```
+
+### Phase 4: Integration
+This takes your baseline .pl file and "injects" the optimized coordinates.
+
+```
+python3 re_intregrate_placement.py
+```
+Expected Output: ```Merged_optimized.pl``` should be generated in ```adaptec1/Results/```
+
+#### Important Notes to Ensure Success:
+Run from Approach/: Do not run these scripts from the Macro_Placement_WSL root or the adaptec1 folder. If you run them from the wrong place, the .. in the file paths will point to the wrong location, and the script will fail to find adaptec1.nodes or adaptec1.pl.
+
+#### Dependencies:
+Ensure Gurobi is active/installed, as optimize_macros.py relies on gurobipy.
+
+#### Standard Cell Handling: 
+Your re_intregrate_placement.py script now handles standard cells by marking them : N (movable) while respecting the fixed status of IO pads. If you get parser errors in OpenROAD later, it means there are still nodes in your .pl file incorrectly marked as /FIXED that OpenROAD doesn't recognize as terminals. The log output shows FIXED for macros, which is correct; if you see FIXED for a standard cell (non-macro), that cell needs its tag removed in the .pl file.
