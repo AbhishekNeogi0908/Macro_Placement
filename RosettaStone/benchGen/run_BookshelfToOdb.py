@@ -67,6 +67,11 @@ def_path = os.path.join(output_dir, f"adaptec1_{tag}.def")
 odb.write_def(block, def_path)
 
 # 11. Save LEF
+libs = db.getLibs()
+print(f"DEBUG: Found {len(libs)} libraries in database.")
+for lib in libs:
+    print(f"DEBUG: Found library: {lib.getName()}")
+
 for lib in db.getLibs():
     lef_path = os.path.join(output_dir, f"{lib.getName()}.lef")
     odb.write_lef(lib, lef_path)

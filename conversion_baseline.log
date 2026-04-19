@@ -172,6 +172,9 @@ Total 542 macros are created in OpenDB
 210000 nets are created in OpenDB
 220000 nets are created in OpenDB
 Total 221142 nets are created in OpenDB
+DEBUG: Found 2 libraries in database.
+DEBUG: Found library: Nangate45.lef
+DEBUG: Found library: fakeMacros
 Generated LEF: odbFiles/Nangate45.lef.lef
 Generated LEF: odbFiles/fakeMacros.lef
 
