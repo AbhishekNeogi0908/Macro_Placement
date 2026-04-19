@@ -744,19 +744,43 @@ class BookshelfToOdb:
       plObjName = curPl[0]
 
       # FixedInsts
-      if curPl[-1] == "/FIXED":
-        idx = self.fixedInstDict[plObjName]
-        self.fixedInsts[idx].SetLxLy(
-            float(curPl[1]),
-            float(curPl[2]))
+      # if curPl[-1] == "/FIXED":
+      #   idx = self.fixedInstDict[plObjName]
+      #   self.fixedInsts[idx].SetLxLy(
+      #       float(curPl[1]),
+      #       float(curPl[2]))
 
-      # Primary 
+      # # Primary 
+      # elif curPl[-1] == "/FIXED_NI":
+      #   idx = self.primaryDict[plObjName]
+      #   self.primary[idx].SetXY(
+      #       float(curPl[1]),
+      #       float(curPl[2]))
+
+      # Handle Fixed instances
+      if curPl[-1] == "/FIXED":
+        # Check if it is a registered terminal/macro
+        if plObjName in self.fixedInstDict:
+          idx = self.fixedInstDict[plObjName]
+          self.fixedInsts[idx].SetLxLy(float(curPl[1]), float(curPl[2]))
+        
+        # IF IT'S NOT IN fixedInstDict, IT'S YOUR OPTIMIZED STANDARD CELL
+        else:
+          # Access the ODB object directly to set the status
+          # Note: Ensure 'self.db' is the attribute name for your OpenDB database
+          inst = self.db.getChip().getBlock().findInst(plObjName)
+          if inst:
+            inst.setPlacementStatus('FIXED')
+            inst.setLocation(int(float(curPl[1])), int(float(curPl[2])))
+          else:
+            print(f"Warning: Instance {plObjName} marked /FIXED but not found in DB.")
+
+      # Primary (IO) handling
       elif curPl[-1] == "/FIXED_NI":
         idx = self.primaryDict[plObjName]
-        self.primary[idx].SetXY(
-            float(curPl[1]),
-            float(curPl[2]))
+        self.primary[idx].SetXY(float(curPl[1]), float(curPl[2]))
 
+        
     # traverse bsShapeList to fill in obs structure of fixedInsts
     for curInst in self.bsShapeList:
       instName = curInst[0]

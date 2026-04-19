@@ -3,7 +3,7 @@ Features included (+) or not (-): +GPU +GUI +Python
 This program is licensed under the BSD-3 license. See the LICENSE file for details.
 Components of this program may be licensed under more restrictive licenses which must be honored.
 [WARNING ORD-0039] .openroad ignored with -python
-[INFO ODB-0227] LEF file: /mnt/c/Users/abhis/OneDrive/Desktop/Macro_Placement_WSL/tech/Nangate45.lef, created 22 layers, 27 vias, 135 library cells
+Enter mode (baseline / optimized): [INFO ODB-0227] LEF file: /mnt/c/Users/abhis/OneDrive/Desktop/Macro_Placement_WSL/tech/Nangate45.lef, created 22 layers, 27 vias, 135 library cells
 Loading Technology LEF: /mnt/c/Users/abhis/OneDrive/Desktop/Macro_Placement_WSL/tech/Nangate45.lef
 Auto-detected Site Name: FreePDK45_38x28_10R_NP_162NW_34O
 Parsing adaptec1.aux ...
@@ -172,10 +172,10 @@ Total 542 macros are created in OpenDB
 210000 nets are created in OpenDB
 220000 nets are created in OpenDB
 Total 221142 nets are created in OpenDB
+Generated LEF: odbFiles/Nangate45.lef.lef
+Generated LEF: odbFiles/fakeMacros.lef
 
-Success! Baseline created at odbFiles/adaptec1_baseline.odb
->>> Use exit() or Ctrl-D (i.e. EOF) to exit
->>> Traceback (most recent call last):
-  File "<stdin>", line 1, in <module>
-NameError: name 'ezit' is not defined. Did you mean: 'exit'?
+SUCCESS!
+ODB: odbFiles/adaptec1_baseline.odb
+DEF: odbFiles/adaptec1_baseline.def
 >>> 
