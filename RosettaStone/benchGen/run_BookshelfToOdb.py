@@ -73,7 +73,7 @@ for lib in libs:
     print(f"DEBUG: Found library: {lib.getName()}")
 
 for lib in db.getLibs():
-    lef_path = os.path.join(output_dir, f"{lib.getName()}.lef")
+    lef_path = os.path.join(output_dir, f"{lib.getName()}")
     odb.write_lef(lib, lef_path)
     print(f"Generated LEF: {lef_path}")
 
